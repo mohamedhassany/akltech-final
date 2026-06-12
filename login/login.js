@@ -17,7 +17,7 @@ if (signInMobileLink) signInMobileLink.addEventListener('click', () => container
 // ==========================================
 // 2. إعدادات السيرفر 
 // ==========================================
-const API_BASE_URL = 'https://mohassanyabd-akltech-api.hf.space'; 
+const API_BASE_URL = 'https://mohassanyabd-akltech-api.hf.space/api'; 
 
 // ==========================================
 // 🔴 إضافة أمنية: تنظيف المدخلات لمنع الـ XSS
