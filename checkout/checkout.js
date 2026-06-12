@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://mohassanyabd-akltech-api.hf.space';
+const API_BASE_URL = 'https://mohassanyabd-akltech-api.hf.space/api';
 
 document.addEventListener('DOMContentLoaded', () => {
     loadCheckoutData();
