@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://mohassanyabd-akltech-api.hf.space';
+const API_BASE_URL = 'https://mohassanyabd-akltech-api.hf.space/api';
 // الاعتماد على التوكن
 const token = localStorage.getItem('jwtToken');
 // بنحتفظ بالـ ID مؤقتاً للتوافق مع باقي الملفات
