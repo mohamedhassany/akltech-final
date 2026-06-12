@@ -1,5 +1,5 @@
 let tables = []; 
-const API_BASE_URL = 'http://127.0.0.1:5000/api';
+const API_BASE_URL = 'https://mohassanyabd-akltech-api.hf.space/api';
 // 🔴 سحب التوكن من المتصفح
 const token = localStorage.getItem('jwtToken');
 
