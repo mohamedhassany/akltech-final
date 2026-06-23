@@ -1,5 +1,5 @@
 let tables = []; 
-const API_BASE_URL = 'https://mohassanyabd-akltech-api.hf.space/api';
+const API_BASE_URL = 'https://mohassanyabd-akltech-api.hf.space';
 
 
 const token = localStorage.getItem('jwtToken');
