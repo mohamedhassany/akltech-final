@@ -1,7 +1,6 @@
 let tables = []; 
-const API_BASE_URL = 'https://mohassanyabd-akltech-api.hf.space';
-
-
+const API_BASE_URL = 'https://mohassanyabd-akltech-api.hf.space/api';
+// 🔴 سحب التوكن من المتصفح
 const token = localStorage.getItem('jwtToken');
 
 const floor = document.getElementById("restaurant-floor");
@@ -305,8 +304,7 @@ document.getElementById("backBtn").addEventListener("click", function() {
 
 // ================= التعديل الأساسي للتأمين =================
 confirmBtn.addEventListener("click", async function() {
-    // التعديل الأول: نطلب تسجيل الدخول فقط لو كان المود حجز مستقبلي (reservation)
-    if (mode === 'reservation' && !token) {
+    if (!token) {
         alert("Please login first to reserve a table.");
         window.location.href = "../login/login.html";
         return;
@@ -336,18 +334,12 @@ confirmBtn.addEventListener("click", async function() {
         confirmBtn.disabled = true;
 
         try {
-            // التعديل الثاني: تجهيز الـ Headers ديناميكياً لكي لا يتم إرسال توكن فارغ
-            const headers = { 
-                'Content-Type': 'application/json'
-            };
-            // إضافة التوكن فقط إذا كان موجوداً
-            if (token) {
-                headers['Authorization'] = `Bearer ${token}`;
-            }
-
             const response = await fetch(`${API_BASE_URL}/check_availability`, {
                 method: 'POST',
-                headers: headers,
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}` 
+                },
                 body: JSON.stringify({ 
                     table_id: selectedTableId, 
                     res_date: dateInput, 
