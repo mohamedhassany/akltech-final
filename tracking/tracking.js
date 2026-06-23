@@ -176,7 +176,8 @@ function createOrderCard(order) {
     // تمرير الـ mode المتنظف
     let progressHTML = generateProgressBar(mode, stat);
     
-    let cancelBtn = (stat === 'new' || stat === 'payment') ? 
+    // 🔴 التعديل هنا: جعل زر الإلغاء يظهر فقط في حالة new
+    let cancelBtn = (stat === 'new') ? 
         `<button class="btn-cancel" onclick="cancelOrder(${orderId})">Cancel Order</button>` : '';
 
     const timeString = new Date(order.ordered_at || order.timestamp).toLocaleTimeString();
