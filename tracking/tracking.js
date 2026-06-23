@@ -167,9 +167,9 @@ function createOrderCard(order) {
 
     // === تغيير المسميات في واجهة العميل ===
     let displayStatus = order.status;
-    if (stat === 'new' || stat === 'payment') displayStatus = 'New'; 
+    if (stat === 'new') displayStatus = 'New'; 
     if (stat === 'confirmed' || stat === 'preparing') displayStatus = 'Preparing';
-    if (stat === 'ready') displayStatus = 'Ready'; 
+    if (stat === 'ready' || stat === 'payment') displayStatus = 'Ready'; // 🔴 تعديل: إبقاء الـ payment كـ Ready
     if (stat === 'completed' || stat === 'done') displayStatus = 'Completed';
     if (stat === 'delivered') displayStatus = 'Delivered';
 
@@ -240,9 +240,7 @@ function createOrderCard(order) {
 
 // === التعديل الخاص بالـ Progress Bar ===
 function generateProgressBar(mode, stat) {
-    if (stat === 'payment') {
-        stat = 'new';
-    }
+    // 🔴 تم إزالة الشرط الذي يعيد payment إلى new
 
     let s1 = 'step'; // New
     let s2 = 'step'; // Preparing
@@ -257,7 +255,7 @@ function generateProgressBar(mode, stat) {
         s1 = 'step completed';
         s2 = 'step active';
     } 
-    else if (stat === 'ready') {
+    else if (['ready', 'payment'].includes(stat)) { // 🔴 تعديل: إضافة الـ payment لمرحلة الـ Ready
         s1 = 'step completed';
         s2 = 'step completed';
         s3 = 'step active';
@@ -306,9 +304,9 @@ function renderHistory(orders) {
         const color = isCancelled ? '#ef4444' : '#10b981';
         
         let displayStatus = order.status;
-        if (stat === 'new' || stat === 'payment') displayStatus = 'New';
+        if (stat === 'new') displayStatus = 'New';
         if (stat === 'confirmed' || stat === 'preparing') displayStatus = 'Preparing';
-        if (stat === 'ready') displayStatus = 'Ready';
+        if (stat === 'ready' || stat === 'payment') displayStatus = 'Ready'; // 🔴 تعديل هنا أيضاً
         if (stat === 'completed' || stat === 'done') displayStatus = 'Completed';
         if (stat === 'delivered') displayStatus = 'Delivered';
         
